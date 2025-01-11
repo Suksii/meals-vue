@@ -1,6 +1,6 @@
 <script setup>
-import { onMounted, ref } from 'vue';
-import { request } from '../api';
+import { computed, onMounted } from 'vue';
+import { useStore } from 'vuex'
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay } from 'swiper/modules';
@@ -8,18 +8,12 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
-const categories = ref([]);
 const modules = [Autoplay]
+const store = useStore();
+const categories = computed(() => store.getters.allCategories);
 
 onMounted(async () => {
-    try {
-
-        const response = await request.get('/categories.php')
-        console.log(response.data);
-        categories.value = response.data.categories
-    } catch (err) {
-        console.error(err);
-    }
+    await store.dispatch('fetchCategories')
 })
 
 const onSwiper = (swiper) => {

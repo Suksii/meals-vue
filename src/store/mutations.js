@@ -1,3 +1,5 @@
-const mutations = () => {};
-
-export default mutations;
+export default {
+  setCategories(state, categories) {
+    state.categories = categories;
+  },
+};

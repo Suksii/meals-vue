@@ -1,3 +1,5 @@
-const getters = () => {};
-
-export default getters;
+export default {
+  allCategories(state) {
+    return state.categories;
+  },
+};
