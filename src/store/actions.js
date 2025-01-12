@@ -12,7 +12,7 @@ export default {
   async fetchMealsByCategory({ commit }, category) {
     try {
       const { data } = await request.get(`/filter.php?c=${category}`);
-      commit("setMealsByCategory", data.meals || {});
+      commit("setMealsByCategory", data.meals || []);
     } catch (err) {
       console.error(err);
     }

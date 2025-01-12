@@ -39,11 +39,12 @@ const onSlideChange = () => {
             :autoplay="{ delay: 1, disableOnInteraction: false }" :speed="2000" @swiper="onSwiper"
             @slideChange="onSlideChange">
             <swiper-slide v-for="category in categories" :key="category.idCategory">
-                <div class="flex flex-col items-center justify-center gap-4">
+                <router-link :to="`/meals/${category.strCategory}`"
+                    class="flex flex-col items-center justify-center gap-4">
                     <img :src="category.strCategoryThumb" :alt="category.strCategory"
                         class="rounded-full h-24 w-24 object-cover shrink-0" />
                     <h3 class="text-xl font-semibold uppercase">{{ category.strCategory }}</h3>
-                </div>
+                </router-link>
             </swiper-slide>
         </swiper>
     </div>

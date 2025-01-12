@@ -1,17 +1,29 @@
 <script setup>
 import { useStore } from 'vuex'
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
 const store = useStore();
+const route = useRoute();
 
-const mealsByCategory = computed(() => store.getters.allMealsByCategory);
+const category = computed(() => route.params.category)
+console.log(category.value);
+
+const mealsByCategory = computed(() => store.state.mealsByCategory);
+
 
 onMounted(async () => {
-    await store.dispatch('fetchMealsByCategory')
+    await store.dispatch('fetchMealsByCategory', category.value)
 })
 
 </script>
 <template>
-    <div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div v-for="meal in mealsByCategory" :key="meal.idMeal" class="w-fit">
+            <div class="flex flex-col">
+                <img :src="meal.strMealThumb" :alt="meal.strMeal"/>
+                <p class="text-center text-xl font-semibold py2">{{ meal.strMeal }}</p>
 
+            </div>
+        </div>
     </div>
 </template>

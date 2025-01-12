@@ -13,6 +13,12 @@ const routes = [
     name: "byLetter",
     component: MealsView,
   },
+  {
+    path: "/meals/:category",
+    name: "byCategory",
+    component: MealsView,
+    props: true,
+  },
 ];
 
 const router = createRouter({
