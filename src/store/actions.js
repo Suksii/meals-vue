@@ -17,4 +17,12 @@ export default {
       console.error(err);
     }
   },
+  async fetchMealById({ commit }, id) {
+    try {
+      const { data } = await request.get(`/lookup.php?i=${id}`);
+      commit("setMealById", data.meals || []);
+    } catch (err) {
+      console.error(err);
+    }
+  },
 };

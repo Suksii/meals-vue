@@ -19,11 +19,11 @@ onMounted(async () => {
 <template>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <div v-for="meal in mealsByCategory" :key="meal.idMeal" class="w-fit">
-            <div class="flex flex-col">
-                <img :src="meal.strMealThumb" :alt="meal.strMeal"/>
+            <router-link :to="`/meal/${meal.idMeal}`" class="flex flex-col">
+                <img :src="meal.strMealThumb" :alt="meal.strMeal" class="object-cover" />
                 <p class="text-center text-xl font-semibold py2">{{ meal.strMeal }}</p>
 
-            </div>
+            </router-link>
         </div>
     </div>
 </template>
