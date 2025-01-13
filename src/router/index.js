@@ -24,7 +24,6 @@ const routes = [
     path: "/meal/:id",
     name: "byId",
     component: SingleMealView,
-    props: true,
   },
 ];
 

@@ -8,4 +8,7 @@ export default {
   setMealById(state, mealById) {
     state.mealById = mealById;
   },
+  setMealsByFirstLetter(state, mealsByFirstLetter) {
+    state.mealsByFirstLetter = mealsByFirstLetter;
+  },
 };

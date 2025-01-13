@@ -7,12 +7,19 @@ const route = useRoute();
 const store = useStore();
 
 const id = route.params.id;
-console.log(id);
 
 const mealById = computed(() => store.state.mealById);
+
+console.log(mealById.value);
+
 
 onMounted(async () => {
     store.dispatch('fetchMealById', id);
 })
+
 </script>
-<template></template>
+<template>
+    <div v-for="meal in mealById">
+        {{ meal.idMeal }}
+    </div>
+</template>

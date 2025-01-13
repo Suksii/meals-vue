@@ -25,4 +25,12 @@ export default {
       console.error(err);
     }
   },
+  async fetchMealsByFirstLetter({ commit }, letter) {
+    try {
+      const { data } = await request.get(`/search.php?f=${letter}`);
+      commit("setMealsByFirstLetter", data.meals || []);
+    } catch (err) {
+      console.error(err);
+    }
+  },
 };

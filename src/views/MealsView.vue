@@ -6,9 +6,9 @@ const store = useStore();
 const route = useRoute();
 
 const category = computed(() => route.params.category)
-console.log(category.value);
 
 const mealsByCategory = computed(() => store.state.mealsByCategory);
+
 
 
 onMounted(async () => {
