@@ -25,6 +25,12 @@ const routes = [
     name: "byId",
     component: SingleMealView,
   },
+
+  {
+    path: "/meals/letter/:letter",
+    name: "byLetter",
+    component: MealsView,
+  },
 ];
 
 const router = createRouter({

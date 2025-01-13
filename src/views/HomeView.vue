@@ -27,12 +27,6 @@ const onSlideChange = () => {
 
 <template>
     <div class="flex justify-center gap-4 py-6">
-        <div class="grid grid-cols-7 gap-2 p-4">
-            <router-link :to="`/letter/${letter}`" v-for="letter in letters" :key="letter"
-                class="text-xl cursor-pointer w-8 flex justify-center items-center">
-                {{ letter }}
-            </router-link>
-        </div>
     </div>
     <div class="flex justify-center gap-4 md:w-[80%] px-4 mx-auto">
         <swiper :modules="modules" :slides-per-view="6" :space-between="50" :loop="true"
