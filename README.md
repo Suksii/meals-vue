@@ -1,1 +1,3 @@
 # Meals app (vue)
+
+## About
