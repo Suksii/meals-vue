@@ -31,10 +31,13 @@ watch(letter, fetchMeals)
         </router-link>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div v-for="meal in mealsByFirstLetter" :key="meal.idMeal" class="w-fit">
-            <router-link :to="`/meal/${meal.idMeal}`" class="flex flex-col">
-                <img :src="meal.strMealThumb" :alt="meal.strMeal" class="object-cover" />
-                <p class="text-center text-xl font-semibold py2">{{ meal.strMeal }}</p>
+        <div v-for="meal in mealsByFirstLetter" :key="meal.idMeal" class="w-fit overflow-hidden group rounded-lg">
+            <router-link :to="`/meal/${meal.idMeal}`" class="relative">
+                <img :src="meal.strMealThumb" :alt="meal.strMeal" class="object-cover group-hover:scale-110 transform duration-300" />
+                <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+                <p
+                    class="absolute top-0 left-1/2 -translate-x-1/2 text-center w-full text-2xl group-hover:text-blue-200 duration-300 text-white font-semibold py-2">
+                    {{ meal.strMeal }}</p>
 
             </router-link>
         </div>
