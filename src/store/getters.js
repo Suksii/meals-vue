@@ -8,7 +8,7 @@ export default {
   mealById(state) {
     return state.mealById;
   },
-  mealByFirstLetter(state) {
-    return state.mealByFirstLetter;
+  allMealsByFirstLetter(state) {
+    return state.mealsByFirstLetter;
   },
 };
