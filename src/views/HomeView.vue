@@ -7,7 +7,6 @@ import { Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
 
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
 const modules = [Autoplay]
 const store = useStore();
 const categories = computed(() => store.getters.allCategories);
