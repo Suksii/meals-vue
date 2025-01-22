@@ -28,7 +28,6 @@ console.log(lettersShown.value);
                     @click="showCategories">
                     Search by category
                 </p>
-                <div v-if="categoriesShown">3333</div>
             </div>
             <div class="relative">
                 <p class="text-lg font-semibold px-4 py-2 md:py-6 cursor-pointer hover:text-blue-600 border-b-2 border-transparent hover:border-blue-600 transition-all duration-300 ease-in-out"
@@ -36,9 +35,9 @@ console.log(lettersShown.value);
                     Search by first letter
                 </p>
                 <transition name="fade" enter-active-class="transition duration-300 ease-out transform"
-                    enter-from-class="opacity-0 scale-95" enter-to-class="opacity-100 scale-100"
+                    enter-from-class="opacity-0 scale-95 -translate-y-12" enter-to-class="opacity-100 scale-100"
                     leave-active-class="transition duration-300 ease-in transform"
-                    leave-from-class="opacity-100 scale-100" leave-to-class="opacity-0 scale-95">
+                    leave-from-class="opacity-100 scale-100 " leave-to-class="opacity-0 scale-95 translate-y-12">
                     <div v-if="lettersShown"
                         class="bg-gray-50 shadow-md rounded-md w-96 absolute top-[100%] mt-6 left-1/2 -translate-x-1/2 grid grid-cols-6 gap-2 p-4 z-50">
                         <router-link :to="`/meals/letter/${letter}`" v-for="letter in letters" :key="letter"
