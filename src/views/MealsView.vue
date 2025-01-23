@@ -20,7 +20,6 @@ const meals = computed(() => {
     return []
 })
 
-
 const fetchMeals = async () => {
     if (category.value) {
         await store.dispatch('fetchMealsByCategory', category.value)
