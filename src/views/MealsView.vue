@@ -7,12 +7,15 @@ const route = useRoute();
 
 const category = computed(() => route.params.category)
 const letter = computed(() => route.params.letter);
+const name = computed(() => route.params.name);
 
 const meals = computed(() => {
     if (category.value) {
         return store.state.mealsByCategory;
     } else if (letter.value) {
         return store.state.mealsByFirstLetter;
+    } else if (name.value) {
+        return store.state.mealsByName;
     }
     return []
 })
@@ -23,9 +26,11 @@ const fetchMeals = async () => {
         await store.dispatch('fetchMealsByCategory', category.value)
     } else if (letter.value) {
         await store.dispatch('fetchMealsByFirstLetter', letter.value)
+    } else if (name.value) {
+        await store.dispatch('fetchMealsByName', name.value);
     }
 }
-watch(letter, fetchMeals)
+watch([category, letter, name], fetchMeals, { immediate: true })
 
 </script>
 <template>

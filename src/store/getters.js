@@ -5,6 +5,9 @@ export default {
   allMealsByCategory(state) {
     return state.mealsByCategory;
   },
+  allMealsByName(state) {
+    return state.mealsByName;
+  },
   mealById(state) {
     return state.mealById;
   },

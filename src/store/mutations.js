@@ -5,6 +5,9 @@ export default {
   setMealsByCategory(state, mealsByCategory) {
     state.mealsByCategory = mealsByCategory;
   },
+  setMealsByName(state, mealsByName) {
+    state.mealsByName = mealsByName;
+  },
   setMealById(state, mealById) {
     state.mealById = mealById;
   },

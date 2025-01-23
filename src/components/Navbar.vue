@@ -6,7 +6,6 @@ const lettersShown = ref(false);
 const categoriesShown = ref(false);
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
 
-
 const showLetters = () => {
     categoriesShown.value = false;
     lettersShown.value = !lettersShown.value;
@@ -15,8 +14,6 @@ const showCategories = () => {
     lettersShown.value = false;
     categoriesShown.value = !categoriesShown.value;
 }
-
-console.log(lettersShown.value);
 
 </script>
 
