@@ -28,9 +28,10 @@ const onSlideChange = () => {
     <div class="flex justify-center gap-4 py-6">
     </div>
     <div class="flex justify-center gap-4 md:w-[80%] px-4 mx-auto">
-        <swiper :modules="modules" :slides-per-view="6" :space-between="50" :loop="true"
-            :autoplay="{ delay: 1, disableOnInteraction: false }" :speed="2000" @swiper="onSwiper"
-            @slideChange="onSlideChange">
+        <swiper :modules="modules" :space-between="50" :loop="true"
+            :autoplay="{ delay: 1, disableOnInteraction: false }"
+            :breakpoints="{ 0: { slidesPerView: 3 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 6 } }" :speed="2000"
+            @swiper="onSwiper" @slideChange="onSlideChange">
             <swiper-slide v-for="category in categories" :key="category.idCategory">
                 <router-link :to="`/meals/${category.strCategory}`"
                     class="flex flex-col items-center justify-center gap-4">

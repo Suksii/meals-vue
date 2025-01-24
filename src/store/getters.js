@@ -11,6 +11,9 @@ export default {
   mealById(state) {
     return state.mealById;
   },
+  randomMeal(state) {
+    return state.randomMeal;
+  },
   allMealsByFirstLetter(state) {
     return state.mealsByFirstLetter;
   },

@@ -33,6 +33,14 @@ export default {
       console.error(err);
     }
   },
+  async fetchRandomMeal({ commit }) {
+    try {
+      const { data } = await request.get("/random.php");
+      commit("setRandomMeal", data.meals || []);
+    } catch (err) {
+      console.error(err);
+    }
+  },
   async fetchMealsByFirstLetter({ commit }, letter) {
     try {
       const { data } = await request.get(`/search.php?f=${letter}`);

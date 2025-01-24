@@ -33,8 +33,8 @@ watch([category, letter, name], fetchMeals, { immediate: true })
 
 </script>
 <template>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div v-for="meal in meals" :key="meal.idMeal" class="w-fit overflow-hidden group rounded-lg pt-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[80%] mx-auto">
+        <div v-for="meal in meals" :key="meal.idMeal" class="w-fit overflow-hidden group rounded-lg pt-24">
             <router-link :to="`/meal/${meal.idMeal}`" class="relative">
                 <img :src="meal.strMealThumb" :alt="meal.strMeal" class="object-cover" />
                 <div
