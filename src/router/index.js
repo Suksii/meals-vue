@@ -10,11 +10,6 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/letter/:letter",
-    name: "byLetter",
-    component: MealsView,
-  },
-  {
     path: "/meals/:category",
     name: "byCategory",
     component: MealsView,
@@ -26,6 +21,11 @@ const routes = [
     component: SingleMealView,
   },
 
+  {
+    path: "/meals/letter/:letter",
+    name: "byLetter",
+    component: MealsView,
+  },
   {
     path: "/meals/name/:name",
     name: "byName",
