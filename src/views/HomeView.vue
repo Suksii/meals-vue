@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, watch } from 'vue';
 import { useStore } from 'vuex'
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -10,9 +10,14 @@ import 'swiper/css';
 const modules = [Autoplay]
 const store = useStore();
 const categories = computed(() => store.getters.allCategories);
+const randomMeal = computed(() => store.getters.randomMeal);
 
 onMounted(async () => {
     await store.dispatch('fetchCategories')
+})
+
+onMounted(async () => {
+    await store.dispatch('fetchRandomMeal')
 })
 
 const onSwiper = (swiper) => {
@@ -22,16 +27,16 @@ const onSlideChange = () => {
     console.log('slide change');
 };
 
+
+
 </script>
 
 <template>
-    <div class="flex justify-center gap-4 py-6">
-    </div>
-    <div class="flex justify-center gap-4 md:w-[80%] px-4 mx-auto">
+    <div class="flex justify-center gap-4 md:w-[80%] px-4 py-8 mx-auto">
         <swiper :modules="modules" :space-between="50" :loop="true"
             :autoplay="{ delay: 1, disableOnInteraction: false }"
-            :breakpoints="{ 0: { slidesPerView: 3 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 6 } }" :speed="2000"
-            @swiper="onSwiper" @slideChange="onSlideChange">
+            :breakpoints="{ 0: { slidesPerView: 3 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 6 } }"
+            :speed="2000" @swiper="onSwiper" @slideChange="onSlideChange">
             <swiper-slide v-for="category in categories" :key="category.idCategory">
                 <router-link :to="`/meals/${category.strCategory}`"
                     class="flex flex-col items-center justify-center gap-4">
@@ -41,5 +46,8 @@ const onSlideChange = () => {
                 </router-link>
             </swiper-slide>
         </swiper>
+    </div>
+    <div class="" v-for="meal in randomMeal">
+        <p>{{ meal.strMeal }}</p>
     </div>
 </template>

@@ -14,4 +14,7 @@ export default {
   setMealsByFirstLetter(state, mealsByFirstLetter) {
     state.mealsByFirstLetter = mealsByFirstLetter;
   },
+  setRandomMeal(state, randomMeal) {
+    state.randomMeal = randomMeal;
+  },
 };
