@@ -47,7 +47,25 @@ const onSlideChange = () => {
             </swiper-slide>
         </swiper>
     </div>
-    <div class="" v-for="meal in randomMeal">
-        <p>{{ meal.strMeal }}</p>
+
+    <div class="relative flex items-center justify-center bg-black text-white overflow-hidden min-h-screen"
+        v-for="meal in randomMeal">
+        <div class="absolute inset-0 z-0">
+            <img v-if="meal" :src="meal.strMealThumb" :alt="meal.strMeal"
+                class="w-full h-full object-cover filter brightness-75 transition-all duration-700 ease-in-out transform hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-transparent"></div>
+        </div>
+        <div class="relative z-10 text-center px-8 max-w-7xl">
+            <h1 class="">This can be your next favorite meal </h1>
+            <h2 v-if="randomMeal" class="">
+                {{ meal.strMeal }}
+            </h2>
+            <p class="">
+                Explore the world of flavors and elevate your cooking with delicious recipes from around the globe.
+            </p>
+            <div class="">
+                <router-link :to="`/meal/${meal?.idMeal}`" class="">Get Recipe</router-link>
+            </div>
+        </div>
     </div>
 </template>
