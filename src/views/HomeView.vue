@@ -32,13 +32,13 @@ const onSlideChange = () => {
 </script>
 
 <template>
-
     <div class="relative flex items-center justify-center bg-black text-white overflow-hidden min-h-screen"
         v-for="meal in randomMeal">
         <div class="absolute inset-0 z-0">
             <img v-if="meal" :src="meal.strMealThumb" :alt="meal.strMeal"
-                class="w-full h-full object-cover filter brightness-75" />
-            <div class="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-transparent"></div>
+                class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-transparent backdrop-blur-sm">
+            </div>
         </div>
         <div class="relative z-10 text-center px-8 max-w-7xl">
             <h1
@@ -59,19 +59,27 @@ const onSlideChange = () => {
             </div>
         </div>
     </div>
-    <div class="flex justify-center gap-4 md:w-[80%] px-4 py-8 mx-auto">
-        <swiper :modules="modules" :space-between="50" :loop="true"
-            :autoplay="{ delay: 1, disableOnInteraction: false }"
-            :breakpoints="{ 0: { slidesPerView: 3 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 6 } }"
-            :speed="2000" @swiper="onSwiper" @slideChange="onSlideChange">
-            <swiper-slide v-for="category in categories" :key="category.idCategory">
-                <router-link :to="`/meals/${category.strCategory}`"
-                    class="flex flex-col items-center justify-center gap-4">
-                    <img :src="category.strCategoryThumb" :alt="category.strCategory"
-                        class="rounded-full h-24 w-24 object-cover shrink-0" />
-                    <h3 class="text-xl font-semibold uppercase">{{ category.strCategory }}</h3>
-                </router-link>
-            </swiper-slide>
-        </swiper>
+    <div
+        class="flex flex-col justify-center items-center w-full mx-auto bg-gradient-to-bl from-gray-100 via-gray-300 to-gray-100 py-12">
+        <div class="text-center">
+            <h2 class="text-4xl font-semibold text-gray-800">Browse Meal Categories</h2>
+            <p class="text-lg text-gray-600 mt-2">Explore meals by category and find your next favorite dish!</p>
+        </div>
+        <div class="flex justify-center w-full md:w-[80%] mx-auto pt-12">
+            <swiper :modules="modules" :space-between="50" :loop="true"
+                :autoplay="{ delay: 1, disableOnInteraction: false }"
+                :breakpoints="{ 0: { slidesPerView: 2 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 6 } }"
+                :speed="2000" @swiper="onSwiper" @slideChange="onSlideChange">
+                <swiper-slide v-for="category in categories" :key="category.idCategory">
+                    <router-link :to="`/meals/${category.strCategory}`"
+                        class="flex flex-col items-center justify-center gap-4 hover:bg-gray-600 py-8 transition-bg duration-300 group hover:scale-105">
+                        <img :src="category.strCategoryThumb" :alt="category.strCategory"
+                            class="rounded-full group-hover:border-gray-50 border-gray-700 border-4 w-32 h-32 min-h-32 min-w-32 object-cover shrink-0" />
+                        <h3 class="text-2xl font-semibold uppercase group-hover:text-gray-50">{{ category.strCategory }}
+                        </h3>
+                    </router-link>
+                </swiper-slide>
+            </swiper>
+        </div>
     </div>
 </template>
