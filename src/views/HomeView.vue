@@ -34,10 +34,10 @@ const onSlideChange = () => {
 <template>
     <div class="relative flex items-center justify-center bg-black text-white overflow-hidden min-h-screen"
         v-for="meal in randomMeal">
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0 brightness-75">
             <img v-if="meal" :src="meal.strMealThumb" :alt="meal.strMeal"
                 class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-transparent backdrop-blur-sm">
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-transparent">
             </div>
         </div>
         <div class="relative z-10 text-center px-8 max-w-7xl">
