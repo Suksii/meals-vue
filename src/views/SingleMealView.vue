@@ -34,8 +34,16 @@ const getIngredients = (meal) => {
                 class="absolute left-0 top-0 bg-gray-800 text-2xl px-6 py-1.5 -translate-x-1/3 -translate-y-1/3 text-gray-50 italic">
                 {{ meal.strCategory }}</p>
         </div>
-        <div v-for="(ingredient, index) in getIngredients(meal)" :key="index">
-            {{ ingredient }}
+        <div class="px-12 py-4">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4 border-b-2 border-gray-300 pb-2 pl-2 w-[400px]">
+                Ingredients
+            </h2>
+            <ul class="list-disc pl-5 space-y-1">
+                <li v-for="(ingredient, index) in getIngredients(meal)" :key="index"
+                    class="text-lg text-gray-700">
+                    {{ ingredient }}
+                </li>
+            </ul>
         </div>
     </div>
 </template>
