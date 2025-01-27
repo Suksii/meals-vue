@@ -18,7 +18,7 @@ const showCategories = () => {
 </script>
 
 <template>
-    <div class=" bg-gray-50 shadow-md">
+    <div class="bg-gray-50 shadow-md h-[110px]">
         <div
             class="flex flex-col lg:flex-row w-full md:w-[80%] mx-auto items-center justify-between gap-6 px-6 md:px-0 py-4">
             <div class="flex items-center text-center gap-8 group">

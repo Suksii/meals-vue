@@ -38,10 +38,10 @@ watch([category, letter, name], fetchMeals, { immediate: true })
             <router-link :to="`/meal/${meal.idMeal}`" class="relative">
                 <img :src="meal.strMealThumb" :alt="meal.strMeal" class="object-cover" />
                 <div
-                    class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-0 group-hover:scale-50 duration-500">
+                    class="absolute inset-0 bg-black bg-opacity-10 group-hover:bg-opacity-0 group-hover:scale-50 duration-500">
                 </div>
                 <p
-                    class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-gray-50 shadow-lg shadow-gray-700 text-center w-4/5 text-xl group-hover:bg-gray-300 duration-500 font-semibold py-6">
+                    class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-gray-50 shadow-sm shadow-gray-400 text-center w-4/5 text-xl group-hover:bg-gray-100 duration-500 font-semibold py-6">
                     {{ meal.strMeal }}</p>
             </router-link>
         </div>
