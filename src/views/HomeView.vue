@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, watch } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex'
 
 import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -35,8 +35,7 @@ const onSlideChange = () => {
     <div class="relative flex items-center justify-center bg-black text-white overflow-hidden min-h-[calc(100vh-110px)]"
         v-for="meal in randomMeal">
         <div class="absolute inset-0 z-0 brightness-75">
-            <img v-if="meal" :src="meal.strMealThumb" :alt="meal.strMeal"
-                class="w-full h-full object-cover" />
+            <img v-if="meal" :src="meal.strMealThumb" :alt="meal.strMeal" class="w-full h-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-b from-black via-black/70 to-transparent">
             </div>
         </div>

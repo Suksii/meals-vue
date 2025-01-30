@@ -1,10 +1,13 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import SearchByName from './SearchByName.vue';
+import { useStore } from 'vuex';
 
 const lettersShown = ref(false);
 const categoriesShown = ref(false);
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+
+const store = useStore();
 
 const showLetters = () => {
     categoriesShown.value = false;
@@ -14,6 +17,12 @@ const showCategories = () => {
     lettersShown.value = false;
     categoriesShown.value = !categoriesShown.value;
 }
+
+const categories = computed(() => store.getters.allCategories)
+
+onMounted(async () => {
+    await store.dispatch('fetchCategories')
+})
 
 </script>
 
@@ -38,8 +47,11 @@ const showCategories = () => {
                         leave-active-class="transition duration-300 ease-in transform"
                         leave-from-class="opacity-100 scale-100 " leave-to-class="opacity-0 scale-95 translate-y-12">
                         <div v-if="categoriesShown"
-                            class="bg-gray-50 shadow-md rounded-md w-96 absolute top-[100%] mt-6 left-1/2 -translate-x-1/2 grid grid-cols-6 gap-2 p-4 z-50">
-                            <input type="checkbox">
+                            class="bg-gray-50 shadow-md rounded-md w-48 absolute top-[100%] mt-6 left-1/2 -translate-x-1/2 flex flex-col gap-2 p-4 z-50">
+                            <div v-for="category in categories" :key="category.idCategory" class="flex gap-2">
+                                <input type="checkbox"/>
+                                <p class="text-lg">{{ category.strCategory }}</p>
+                            </div>
                         </div>
                     </transition>
                 </div>
