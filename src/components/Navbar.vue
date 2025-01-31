@@ -2,12 +2,16 @@
 import { computed, ref, onMounted } from 'vue';
 import SearchByName from './SearchByName.vue';
 import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
 
 const lettersShown = ref(false);
 const categoriesShown = ref(false);
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("")
+const selectedCategory = ref(null);
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
+const router = useRouter();
 
 const store = useStore();
+
 
 const showLetters = () => {
     categoriesShown.value = false;
@@ -19,6 +23,11 @@ const showCategories = () => {
 }
 
 const categories = computed(() => store.getters.allCategories)
+const navigateToCategory = (category) => {
+    selectedCategory.value = category;
+    router.push(`/meals/${category}`);
+    categoriesShown.value = false;
+}
 
 onMounted(async () => {
     await store.dispatch('fetchCategories')
@@ -49,7 +58,8 @@ onMounted(async () => {
                         <div v-if="categoriesShown"
                             class="bg-gray-50 shadow-md rounded-md w-48 absolute top-[100%] mt-6 left-1/2 -translate-x-1/2 flex flex-col gap-2 p-4 z-50">
                             <div v-for="category in categories" :key="category.idCategory" class="flex gap-2">
-                                <input type="checkbox"/>
+                                <input type="radio" :value="category.strCategory"
+                                    v-model="selectedCategory" @change="navigateToCategory(category.strCategory)" />
                                 <p class="text-lg">{{ category.strCategory }}</p>
                             </div>
                         </div>
