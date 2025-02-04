@@ -57,10 +57,23 @@ onMounted(async () => {
                         leave-from-class="opacity-100 scale-100 " leave-to-class="opacity-0 scale-95 translate-y-12">
                         <div v-if="categoriesShown"
                             class="bg-gray-50 shadow-md rounded-md w-48 absolute top-[100%] mt-6 left-1/2 -translate-x-1/2 flex flex-col gap-2 p-4 z-50">
-                            <div v-for="category in categories" :key="category.idCategory" class="flex gap-2">
-                                <input type="radio" :value="category.strCategory"
-                                    v-model="selectedCategory" @change="navigateToCategory(category.strCategory)" />
-                                <p class="text-lg">{{ category.strCategory }}</p>
+                            <div v-for="category in categories" :key="category.idCategory"
+                                class="flex items-center gap-3 cursor-pointer">
+                                <div class="w-6 h-6 border-gray-500 flex items-center justify-center cursor-pointer transition-all duration-300"
+                                    :class="[selectedCategory === category.strCategory ? 'border-gray-700 border-2' : 'border-gray-400 border']"
+                                    @click="navigateToCategory(category.strCategory)">
+                                    <svg v-if="selectedCategory === category.strCategory"
+                                        xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                </div>
+                                <p class="text-lg text-gray-700 transition-all duration-300"
+                                    :class="{ 'text-gray-700 font-semibold': selectedCategory === category.strCategory }">
+                                    {{ category.strCategory }}
+                                </p>
                             </div>
                         </div>
                     </transition>
