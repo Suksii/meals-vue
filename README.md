@@ -1,7 +1,7 @@
 # Meals app (vue)
 
 ## About
-Project developed in Vue. In this app you can search for meals by name, first letter, category
+Project developed in Vue. In this app you can search for meals by name, first letter and category
 
 ## Technical Details
 - **Vue.js:**
