@@ -1,14 +1,15 @@
 <script setup>
-import { computed, ref, onMounted } from 'vue';
+import { computed, ref, onMounted, watch } from 'vue';
 import SearchByName from './SearchByName.vue';
 import { useStore } from 'vuex';
-import { useRouter } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const lettersShown = ref(false);
 const categoriesShown = ref(false);
 const selectedCategory = ref(null);
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 const router = useRouter();
+const route = useRoute();
 
 const store = useStore();
 
@@ -32,7 +33,6 @@ const navigateToCategory = (category) => {
 onMounted(async () => {
     await store.dispatch('fetchCategories')
 })
-
 </script>
 
 <template>
@@ -60,9 +60,9 @@ onMounted(async () => {
                             <div v-for="category in categories" :key="category.idCategory"
                                 class="flex items-center gap-3 cursor-pointer">
                                 <div class="w-6 h-6 border-gray-500 flex items-center justify-center cursor-pointer transition-all duration-300"
-                                    :class="[selectedCategory === category.strCategory ? 'border-gray-700 border-2' : 'border-gray-400 border']"
+                                    :class="[selectedCategory === category.strCategory && route.fullPath.includes(category.strCategory) ? 'border-gray-700 border-2' : 'border-gray-400 border']"
                                     @click="navigateToCategory(category.strCategory)">
-                                    <svg v-if="selectedCategory === category.strCategory"
+                                    <svg v-if="selectedCategory === category.strCategory && route.fullPath.includes(category.strCategory)"
                                         xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                         stroke-linejoin="round">
@@ -71,7 +71,7 @@ onMounted(async () => {
                                     </svg>
                                 </div>
                                 <p class="text-lg text-gray-700 transition-all duration-300"
-                                    :class="{ 'text-gray-700 font-semibold': selectedCategory === category.strCategory }">
+                                    :class="{ 'text-gray-700 font-semibold': selectedCategory === category.strCategory && route.fullPath.includes(category.strCategory) }">
                                     {{ category.strCategory }}
                                 </p>
                             </div>
