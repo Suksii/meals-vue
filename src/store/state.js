@@ -5,4 +5,5 @@ export default {
   mealById: [],
   randomMeal: [],
   mealsByFirstLetter: [],
+  loading: false,
 };

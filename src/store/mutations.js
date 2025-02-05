@@ -17,4 +17,7 @@ export default {
   setRandomMeal(state, randomMeal) {
     state.randomMeal = randomMeal;
   },
+  setLoading(state, status) {
+    state.loading = status;
+  },
 };
