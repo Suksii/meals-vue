@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Autoplay } from 'swiper/modules';
 
 import 'swiper/css';
+import Loading from '../components/Loading.vue';
 
 const modules = [Autoplay]
 const store = useStore();
@@ -32,6 +33,7 @@ const onSlideChange = () => {
 </script>
 
 <template>
+    <Loading />
     <div class="relative flex items-center justify-center bg-black text-white overflow-hidden min-h-[calc(100vh-110px)]"
         v-for="meal in randomMeal">
         <div class="absolute inset-0 z-0 brightness-75">

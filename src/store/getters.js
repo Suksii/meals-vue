@@ -17,4 +17,7 @@ export default {
   allMealsByFirstLetter(state) {
     return state.mealsByFirstLetter;
   },
+  isLoading(state) {
+    return state.loading;
+  },
 };

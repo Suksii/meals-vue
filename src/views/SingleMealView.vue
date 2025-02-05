@@ -2,6 +2,7 @@
 import { computed, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
+import Loading from '../components/Loading.vue';
 
 const route = useRoute();
 const store = useStore();
@@ -9,6 +10,7 @@ const store = useStore();
 const id = route.params.id;
 
 const mealById = computed(() => store.state.mealById);
+
 
 onMounted(async () => {
     store.dispatch('fetchMealById', id);
@@ -26,7 +28,9 @@ const getIngredients = (meal) => {
     return ingredients;
 }
 </script>
+
 <template>
+    <Loading />
     <div class="flex flex-col my-12 w-full md:w-[80%] mx-auto" v-for="meal in mealById">
         <h1 class="text-3xl font-semibold pb-2 text-center border-b-4 mb-8 border-gray-300">{{ meal.strMeal }}</h1>
         <div class="flex flex-col md:flex-row justify-center items-start">
