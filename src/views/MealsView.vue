@@ -37,7 +37,8 @@ watch([category, letter, name], fetchMeals, { immediate: true })
     <Loading />
     <h1 class="w-[80%] mx-auto text-3xl font-semibold pb-2 text-center border-b-4 my-8 text-gray-800 border-gray-300">
         Explore our meals</h1>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[80%] mx-auto">
+    <div v-if="meals.length > 0"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-[80%] mx-auto mb-6">
         <div v-for="meal in meals" :key="meal.idMeal" class="w-fit overflow-hidden group rounded-lg pt-24">
             <router-link :to="`/meal/${meal.idMeal}`" class="relative">
                 <img :src="meal.strMealThumb" :alt="meal.strMeal" class="object-cover" />
@@ -50,4 +51,5 @@ watch([category, letter, name], fetchMeals, { immediate: true })
             </router-link>
         </div>
     </div>
+    <div v-else class="py-20 text-center text-xl">No meals found</div>
 </template>
