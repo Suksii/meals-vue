@@ -14,7 +14,7 @@ Project developed in Vue. In this app you can search for meals by name, first le
  
 - **JavaScript:**
   - `trim, push`
-  - 
+  
 ## Views
 
 - **Home View**
